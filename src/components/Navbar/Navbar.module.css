@@ -1,8 +1,18 @@
 .nav {
   grid-area: nav;
   background: magenta;
+  padding: 20px;
+}
+
+.item {
+  padding: 5px 0;
 }
 
 .nav a {
   color: yellow;
+}
+
+.nav a.active {
+  font-weight: bold;
+  text-decoration: none;
 }
