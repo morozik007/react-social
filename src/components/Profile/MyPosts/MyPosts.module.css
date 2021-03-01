@@ -1,0 +1,16 @@
+.wrapper {
+  padding: 10px 20px 10px;
+}
+
+.form {
+  margin-bottom: 20px;
+}
+
+.wrapper h2 {
+  margin-top: 0;
+}
+
+.form textarea {
+  width: 100%;
+  resize: vertical;
+}

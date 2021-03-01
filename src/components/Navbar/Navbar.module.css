@@ -1,0 +1,8 @@
+.nav {
+  grid-area: nav;
+  background: magenta;
+}
+
+.nav a {
+  color: yellow;
+}
