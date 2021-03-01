@@ -7,9 +7,9 @@ import Dialogs from './components/Dialogs/Dialogs';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
-import { BrowserRouter as Router,  Switch,  Route, Redirect } from 'react-router-dom';
+import { Switch,  Route, Redirect } from 'react-router-dom';
 
-function App() {
+function App({posts, dialogs, messages}) {
   return (
     
       <div className="App app-wrapper">
@@ -21,10 +21,10 @@ function App() {
               <Redirect to="/profile" />
             </Route>
             <Route path="/profile">
-              <Profile />
+              <Profile posts={posts} />
             </Route>
             <Route path="/dialogs">
-              <Dialogs />
+              <Dialogs dialogs={dialogs} messages={messages} />
             </Route>
             <Route path="/news">
               <News />

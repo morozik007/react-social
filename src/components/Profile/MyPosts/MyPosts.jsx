@@ -2,7 +2,10 @@ import React from 'react'
 import s from './MyPosts.module.css'
 import Post from './Post/Post'
 
-const MyPosts = () => {
+const MyPosts = ({ posts }) => {
+  let postsElements = posts.map((post) => (
+    <Post key={post.id} likesCount={post.likesCount} message={post.message} />
+  ));
   return (
     <div className={s.wrapper}>
       <h2>My Posts</h2>
@@ -13,12 +16,9 @@ const MyPosts = () => {
         <button>Send</button>
       </div>
 
-      <Post likesCount="1" message="Первый нах!" />
-      <Post likesCount="4" message="Второй нах!" />
-      <Post likesCount="123" message="Очень длинный текст" />
-      <Post likesCount="66" message="авароларфарфаофр" />
+      {postsElements}
     </div>
   );
-}
+};
 
 export default MyPosts;
