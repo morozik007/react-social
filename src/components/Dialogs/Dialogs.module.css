@@ -1,3 +1,15 @@
+.wrapper {
+  display: flex;
+}
+
 .dialogs {
-  
+  width: 200px;
+}
+
+.dialog {
+  margin-bottom: 10px;
+}
+
+.dialog a.active {
+  font-weight: bold;
 }
