@@ -11,7 +11,6 @@ import { Switch,  Route, Redirect } from 'react-router-dom';
 
 function App(props) {
   return (
-    
       <div className="App app-wrapper">
         <Header />
         <Navbar state={props.state.sidebar} />
