@@ -9,22 +9,22 @@ import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import { Switch,  Route, Redirect } from 'react-router-dom';
 
-function App({posts, dialogs, messages}) {
+function App(props) {
   return (
     
       <div className="App app-wrapper">
         <Header />
-        <Navbar />
+        <Navbar state={props.state.sidebar} />
         <article className="app-wrapper-content">
           <Switch>
             <Route exact path="/">
               <Redirect to="/profile" />
             </Route>
             <Route path="/profile">
-              <Profile posts={posts} />
+              <Profile profilePage={props.state.profilePage} addPost={props.addPost} changePost={props.changePost} />
             </Route>
             <Route path="/dialogs">
-              <Dialogs dialogs={dialogs} messages={messages} />
+              <Dialogs state={props.state.dialogsPage} />
             </Route>
             <Route path="/news">
               <News />

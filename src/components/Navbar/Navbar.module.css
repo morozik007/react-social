@@ -10,9 +10,20 @@
 
 .nav a {
   color: yellow;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
 }
 
 .nav a.active {
   font-weight: bold;
   text-decoration: none;
+}
+
+.avatar {
+  display: inline-block;
+  width: 35px;
+  margin-right: 10px;
+  overflow: hidden;
+  border-radius:100%;
 }

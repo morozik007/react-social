@@ -3,15 +3,20 @@ import React from 'react'
 import MyPosts from './MyPosts/MyPosts'
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
-const Profile = ({ posts }) => {
+const Profile = (props) => {
   return (
     <div>
       <h1>Profile</h1>
 
       <ProfileInfo />
-      <MyPosts posts={posts} />
+      <MyPosts
+        posts={props.profilePage.posts}
+        newPostText={props.profilePage.new_message}
+        addPost={props.addPost}
+        changePost={props.changePost}
+      />
     </div>
   );
-}
+};
 
 export default Profile;
