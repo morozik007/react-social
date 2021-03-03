@@ -7,14 +7,14 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import store from './redux/state';
 
 let rerenderEntireTree = (state) => {
-  ReactDOM.render(
-    <React.StrictMode>
-      <Router>
-        <App state={store.getState()} addPost={store.addNewPost.bind(store)} changePost={store.handleChangePost.bind(store)} />
-      </Router>
-    </React.StrictMode>,
-    document.getElementById('root')
-  );
+    ReactDOM.render(
+        <React.StrictMode>
+            <Router>
+                <App state={store.getState()} dispatch={store.dispatch.bind(store)} />
+            </Router>
+        </React.StrictMode>,
+        document.getElementById('root')
+    );
 }
 
 rerenderEntireTree(store.getState());
