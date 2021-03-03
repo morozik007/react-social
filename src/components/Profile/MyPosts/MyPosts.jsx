@@ -24,13 +24,13 @@ const MyPosts = (props) => {
             <h2>My Posts</h2>
             <div className={s.form}>
                 <div>
-          <textarea
-              onChange={changeNewPost}
-              ref={newPostText}
-              cols="30"
-              rows="10"
-              value={props.newPostText}
-          />
+                    <textarea
+                        onChange={changeNewPost}
+                        ref={newPostText}
+                        cols="30"
+                        rows="10"
+                        value={props.newPostText}
+                    />
                 </div>
                 <button onClick={addNewPost}>Add post</button>
             </div>
