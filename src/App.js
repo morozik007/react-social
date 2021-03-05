@@ -7,7 +7,7 @@ import Dialogs from './components/Dialogs/Dialogs';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
-import { Switch,    Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 function App(props) {
     return (
@@ -23,7 +23,7 @@ function App(props) {
                         <Profile profilePage={props.state.profilePage} dispatch={props.dispatch} />
                     </Route>
                     <Route path="/dialogs">
-                        <Dialogs state={props.state.dialogsPage} />
+                        <Dialogs state={props.state.dialogsPage} dispatch={props.dispatch}/>
                     </Route>
                     <Route path="/news">
                         <News />
