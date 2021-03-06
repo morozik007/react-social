@@ -8,8 +8,6 @@ const MyPosts = (props) => {
         <Post key={index} likesCount={post.likesCount} message={post.message} />
     ));
 
-    let newPostText = React.createRef();
-
     let addNewPost = () => {
         props.dispatch(addPostActionCreator());
     };
