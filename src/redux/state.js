@@ -1,7 +1,5 @@
-const ADD_POST = 'ADD-POST';
-const UPDATE_TEXT = 'UPDATE-TEXT';
-const ADD_DIALOG_MESSAGE = 'ADD-DIALOG-MESSAGE';
-const UPDATE_DIALOG_MESSAGE_TEXT = 'UPDATE-DIALOG-MESSAGE-TEXT';
+import profileReducer from "./profile-reducer";
+import dialogsReducer from "./dialogs-reducer";
 
 let store = {
     _state: {
@@ -15,7 +13,7 @@ let store = {
             ],
         },
         dialogsPage: {
-            new_message: 'qqq',
+            new_message: '',
             dialogs: [
                 { id: 1, name: 'Andrey 1'},
                 { id: 2, name: 'Andrey 2'},
@@ -55,83 +53,16 @@ let store = {
     _callSubscriber() {
         console.log('State changed');
     },
-    _addPost() {
-        let newPost = {
-            id: 5,
-            likesCount: 0,
-            message: this._state.profilePage.new_message
-        }
-        this._state.profilePage.posts.push(newPost);
-        this._state.profilePage.new_message = '';
-        this._callSubscriber();
-    },
-    _updateText(message) {
-        this._state.profilePage.new_message = message;
-        this._callSubscriber();
-    },
-    _addDialogMessage() {
-        let newDialogsMessage = {
-            id: '',
-            message: this._state.dialogsPage.new_message
-        }
-        this._state.dialogsPage.messages.push(newDialogsMessage);
-        this._state.dialogsPage.new_message = '';
-        this._callSubscriber();
-    },
-    _updateDialogTextMessage(message) {
-        this._state.dialogsPage.new_message = message;
-        this._callSubscriber();
-    },
     dispatch(action) {
-        // if (action.type === ADD_POST) {
-        //     this._addPost();
-        // } else if (action.type === UPDATE_TEXT) {
-        //     this._updateText(action.message);
-        // }
-        switch (action.type) {
-            case ADD_POST:
-                this._addPost();
-                break;
-            case UPDATE_TEXT:
-                this._updateText(action.message);
-                break;
-            case ADD_DIALOG_MESSAGE:
-                this._addDialogMessage();
-                break;
-            case UPDATE_DIALOG_MESSAGE_TEXT:
-                this._updateDialogTextMessage(action.message)
-                break;
-            default:
-                console.log('Sorry, we are out of');
-         }
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._callSubscriber();
     },
 }
 
-export const addPostActionCreator = () => {
-    return {
-        type: ADD_POST
-    }
-}
 
-export const updateNewPostTextActionCreator = (message) => {
-    return {
-        type: UPDATE_TEXT,
-        message: message
-    }
-}
 
-export const addDialogMessageActionCreator = () => {
-    return {
-        type: ADD_DIALOG_MESSAGE
-    }
-}
 
-export const updateNewDialogMessageActionCreator = (message) => {
-    return {
-        type: UPDATE_DIALOG_MESSAGE_TEXT,
-        message: message
-    }
-}
 
 
 
