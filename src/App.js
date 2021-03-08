@@ -8,6 +8,7 @@ import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 function App(props) {
     return (
@@ -20,10 +21,10 @@ function App(props) {
                         <Redirect to="/profile" />
                     </Route>
                     <Route path="/profile">
-                        <Profile profilePage={props.state.profilePage} dispatch={props.dispatch} />
+                        <Profile store={props.store} />
                     </Route>
                     <Route path="/dialogs">
-                        <Dialogs store={props.store}/>
+                        <DialogsContainer store={props.store}/>
                     </Route>
                     <Route path="/news">
                         <News />
