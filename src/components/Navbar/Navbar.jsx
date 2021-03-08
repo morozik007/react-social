@@ -4,8 +4,6 @@ import { NavLink } from "react-router-dom";
 import {connect} from "react-redux"
 
 const Navbar = (props) => {
-
-    //let state = props.getState();
     //console.log(props)
 
     let navElements = props.sidebar.navLinks.map((link) => (
