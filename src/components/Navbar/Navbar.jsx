@@ -1,9 +1,14 @@
 import React from 'react'
 import s from './Navbar.module.css'
 import { NavLink } from "react-router-dom";
+import {connect} from "react-redux"
 
 const Navbar = (props) => {
-    let navElements = props.state.navLinks.map((link) => (
+
+    //let state = props.getState();
+    //console.log(props)
+
+    let navElements = props.sidebar.navLinks.map((link) => (
         <div className={s.item} key={link.id}>
             <NavLink to={"/" + link.to} activeClassName={s.active}>
                 {link.name}
@@ -11,7 +16,7 @@ const Navbar = (props) => {
         </div>
     ));
 
-    let friends = props.state.friends.map((friend) => (
+    let friends = props.sidebar.friends.map((friend) => (
         <div className={s.item} key={friend.id}>
             <NavLink to={"/friends/" + friend.id} activeClassName={s.active}>
                 <span className={s.avatar}>
@@ -38,4 +43,6 @@ const Navbar = (props) => {
     );
 };
 
-export default Navbar;
+const mapStateToProps = state => state;
+
+export default connect(mapStateToProps)(Navbar);

@@ -20,17 +20,23 @@ let initialState = {
 
 const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_DIALOG_MESSAGE:
+        case ADD_DIALOG_MESSAGE: {
             let newDialogsMessage = {
                 id: '',
                 message: state.new_message
             }
-            state.messages.push(newDialogsMessage);
-            state.new_message = '';
-            return state;
-        case UPDATE_DIALOG_MESSAGE_TEXT:
-            state.new_message = action.message;
-            return state;
+
+            let stateCopy = {...state};
+            stateCopy.messages = [...state.messages];
+            stateCopy.messages.push(newDialogsMessage);
+            stateCopy.new_message = '';
+            return stateCopy;
+        }
+        case UPDATE_DIALOG_MESSAGE_TEXT: {
+            let stateCopy = {...state};
+            stateCopy.new_message = action.message;
+            return stateCopy;
+        }
         default:
             return state;
     }
