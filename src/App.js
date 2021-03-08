@@ -8,8 +8,7 @@ import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import { Switch, Route, Redirect } from 'react-router-dom';
-
-
+import UsersContainer from "./components/Users/UsersContainer";
 
 function App(props) {
     return (
@@ -35,6 +34,9 @@ function App(props) {
                     </Route>
                     <Route path="/settings">
                         <Settings />
+                    </Route>
+                    <Route path="/users">
+                        <UsersContainer />
                     </Route>
                 </Switch>
             </article>

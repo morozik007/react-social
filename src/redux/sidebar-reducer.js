@@ -4,7 +4,8 @@ let initialState = {
         { id: 2, name: 'Dialogs', to: 'dialogs'},
         { id: 3, name: 'News', to: 'news'},
         { id: 4, name: 'Music', to: 'music'},
-        { id: 5, name: 'Settings', to: 'settings'}
+        { id: 5, name: 'Users', to: 'users'},
+        { id: 6, name: 'Settings', to: 'settings'}
     ],
     friends: [
         { id: 1, name: 'Friend 1'},
