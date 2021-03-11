@@ -1,0 +1,11 @@
+.pages span {
+    display: inline-block;
+    padding: 7px 11px;
+    border: solid 1px red;
+    cursor: pointer;
+}
+
+.pages .current {
+    background: blue;
+    color: white;
+}
