@@ -1,54 +1,16 @@
 import React from 'react'
+import axios from "axios";
+import userPhoto from '../../assets/images/user.jpg'
 
 const Users = (props) => {
 
     if (props.users.length === 0) {
-        props.setUsers([
-            {
-                id: 1,
-                followed: true,
-                fullName: 'Andrey',
-                status: 'статус какойто',
-                location: {
-                    city: 'Minsk',
-                    country: 'Belarus'
-                },
-                photoUrl: 'https://vokrug.tv/pic/news/a/d/a/4/ada46649ae337d1f9ddeb1a13b6803c7.jpg'
-            },
-            {
-                id: 2,
-                followed: true,
-                fullName: 'Andrey 2',
-                status: 'статус какойто',
-                location: {
-                    city: 'Kiev',
-                    country: 'Ukraine'
-                },
-                photoUrl: 'https://vokrug.tv/pic/news/a/d/a/4/ada46649ae337d1f9ddeb1a13b6803c7.jpg'
-            },
-            {
-                id: 3,
-                followed: false,
-                fullName: 'Andrey 3',
-                status: 'статус какойто',
-                location: {
-                    city: 'New-york',
-                    country: 'USA'
-                },
-                photoUrl: 'https://vokrug.tv/pic/news/a/d/a/4/ada46649ae337d1f9ddeb1a13b6803c7.jpg'
-            },
-            {
-                id: 4,
-                followed: true,
-                fullName: 'Andrey 4',
-                status: 'статус какойто',
-                location: {
-                    city: 'Berlin',
-                    country: 'Germany'
-                },
-                photoUrl: 'https://vokrug.tv/pic/news/a/d/a/4/ada46649ae337d1f9ddeb1a13b6803c7.jpg'
-            },
-        ])
+        axios.
+            get('https://social-network.samuraijs.com/api/1.0/users')
+            .then(response => {
+                //console.log(response.data.items)
+                props.setUsers(response.data.items)
+            })
     }
 
      return (
@@ -56,23 +18,20 @@ const Users = (props) => {
             <h1>Users</h1>
 
             {
-                props.users.map( u => <div key={u.id}>
-                    <div><img src={u.photoUrl} alt="" width="50"/></div>
+                props.users.map( u => <div key={u.id} className={u.id}>
+                    <div><img src={u.photos.small ? u.photos.small : userPhoto} alt="" width="50"/></div>
                     <div>
-                    { u.followed
-                        ? <button onClick={() => {props.unfollow(u.id)}}>Unfollow</button>
-                        : <button onClick={() => {props.follow(u.id)}}>Follow</button> }
+                        <button
+                            onClick={u.followed ? () => {props.unfollow(u.id)} : () => {props.follow(u.id)}}>
+                            {u.followed ? 'Unfollow' : 'Follow'}
+                        </button>
                     </div>
-                    <div>{u.fullName}</div>
-                    <div>{u.status}</div>
-                    <div>{u.location.city}, {u.location.country}</div>
+                    <div>{u.name}</div>
+                    <div>Status: {u.status ? u.status : 'no status'}</div>
+                    <div>{"u.location.city, u.location.country"}</div>
                     <hr/>
                 </div>)
             }
-
-            <div>
-                <button>Follow</button>
-            </div>
         </div>
     );
 };
