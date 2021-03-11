@@ -3,9 +3,12 @@ import axios from "axios";
 import userPhoto from '../../assets/images/user.jpg'
 
 class Users extends React.Component {
-    constructor(props) {
-        super(props);
+    // если больше ничего не делает то можно не писать
+    // constructor(props) {
+    //     super(props);
+    // }
 
+    componentDidMount() {
         console.log('Created');
 
         if (this.props.users.length === 0) {
@@ -26,7 +29,7 @@ class Users extends React.Component {
     //             })
     //     }
     // }
-    
+
 
     render() {
         return <div>
