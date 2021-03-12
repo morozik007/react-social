@@ -1,7 +1,14 @@
 import React from 'react'
 import s from "./ProfileInfo.module.css";
+import Preloader from "../../common/Preloader/Preloader";
+import userPhoto from "../../../assets/images/user.png";
 
-const ProfileInfo = () => {
+const ProfileInfo = (props) => {
+
+    if (!props.profile) {
+        return <Preloader />
+    }
+    //console.log(props.profile)
     return (
         <div>
             <p>
@@ -15,11 +22,15 @@ const ProfileInfo = () => {
             <div className={s.info}>
                 <div className={s.userpic}>
                     <img
-                        src="https://myareanetwork-photos.s3.amazonaws.com/bizlist_photos/t/176506_1439783277.jpg"
+                        src={props.profile.photos.large ? props.profile.photos.large : userPhoto }
                         alt=""
                     />
                 </div>
-                <div className={s.description}>info + description</div>
+                <div className={s.description}>
+                    <h2>{props.profile.fullName}</h2>
+                    <div>{props.profile.aboutMe}</div>
+                </div>
+
             </div>
         </div>
     );
