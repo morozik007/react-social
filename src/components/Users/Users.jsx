@@ -14,7 +14,6 @@ const Users = (props) => {
 
     return (
         <div>
-            <h1>Users</h1>
             <p className={s.pages}>
                 {pages.map( (p, index) => {
                     return <span
